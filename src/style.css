@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'MyFont';
+    src: url('./my-font.woff'),
+         url('./my-font.woff2');
+    font-weight: 600;
+    font-style: normal;
+}
+
+.hello {
+    color: red;
+    font-family: 'MyFont';
+    background: url('./icon.png') repeat no-repeat;
+    background: url('./thien.jpg') repeat no-repeat;
+}
