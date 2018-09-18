@@ -6,7 +6,8 @@ import TodoApp from './components/TodoApp.jsx';
 
 ReactDOM.render(
     <Provider store={getStore()}>
-        <TodoApp />
+        <TodoApp>
+        </TodoApp>
     </Provider>,
     document.getElementById('app')
 );

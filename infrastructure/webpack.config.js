@@ -83,7 +83,19 @@ module.exports = {
                 query: {
                     presets: ['es2015', 'react']
                 }
+            },
+            {
+                test: /\.tsx?$/,
+                use: [{
+                    loader:   'ts-loader',
+                    options: {
+                        configFile: "infrastructure/tsconfig.json",
+                    }
+                }]
             }
         ]
+    },
+    resolve: {
+        extensions: [".ts", ".tsx", ".js"]
     }
 };
