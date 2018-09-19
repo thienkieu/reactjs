@@ -1,6 +1,7 @@
 import React from 'react';
 import OpenTodoList from './OpenTodoList.jsx';
 import DoneTodoList from './DoneTodoList.jsx';
+import { DoneTodoListPackage, OpenTodoListPackage } from 'todoPackage';
 
 class TodoApp extends React.Component  {
     render() {
@@ -8,6 +9,8 @@ class TodoApp extends React.Component  {
             <div>
                 <OpenTodoList />
                 <DoneTodoList />
+                <DoneTodoListPackage />
+                <OpenTodoListPackage />
             </div>
         );
     }

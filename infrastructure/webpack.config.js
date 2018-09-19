@@ -96,6 +96,9 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: [".ts", ".tsx", ".js"]
+        extensions: [".ts", ".tsx", ".js"],
+        alias: {
+            todoPackage: path.resolve(path.dirname(__dirname)+'/packages/todoComponents')
+        }
     }
 };
