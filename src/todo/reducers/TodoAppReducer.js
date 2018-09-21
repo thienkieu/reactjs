@@ -40,8 +40,8 @@ function todos(state = [], action) {
 }
 
 const todoAppReducer = combineReducers({
-    visibilityFilter,
-    todos
+        visibilityFilter,
+        todos
 });
 
 export default todoAppReducer;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import getStore from '../store';
+import getStore from '../../store';
 import { Hello } from "../../typescript/Hello.tsx";
 import { connect } from 'react-redux'
 

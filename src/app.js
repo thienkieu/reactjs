@@ -1,21 +1,14 @@
-import _ from 'lodash';
-import './style.css';
-import Icon from './icon.png';
-import App from './todo/index';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import getStore from './store';
+import TodoApp from './todo/components/TodoApp.jsx';
+import { makeSelectUser } from './user/selectors/index';
 
-function component() {
-    let element = document.createElement('div');
-    console.log('sdfsdf');
-    element.innerHTML = _.join(['Hello','webpack'], ' ');
-    element.classList.add('hello');
-
-    // Add the image to our existing div
-    var myIcon = new Image();
-    myIcon.src = Icon;
-
-    element.appendChild(myIcon);
-    
-    return element;
-}
-
-//document.body.appendChild(component());
+ReactDOM.render(
+    <Provider store={getStore()}>
+        <TodoApp>
+        </TodoApp>
+    </Provider>,
+    document.getElementById('app')
+);
