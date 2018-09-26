@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import { initialState } from '../reducers/index';
-import getStore from '../../store';
+import getStore from '../../core/store';
 
 const selectUser = () => {
     return getStore().getState().userAppReducer;
@@ -8,7 +8,7 @@ const selectUser = () => {
 
 const makeSelectUser = () => {
     return createSelector(selectUser, user => {
-        return user.get('username');
+        return user.username;
     });
 }
 

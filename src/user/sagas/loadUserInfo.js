@@ -1,7 +1,7 @@
-import { call, put, select, takeLatest } from 'redux-saga/effects';
+import { all, call, put, select, takeEvery } from 'redux-saga/effects';
 import { USER_GET_USER_INFO, USER_LOADED_USER_INFO } from '../constants/actionTypes';
 import { makeSelectUser } from '../selectors/index';
-import { request } from '../api/request';
+import request from '../api/request';
 import { loadedUserInfo } from '../actions/index';
 
 export function* fetchUserInfo() {
@@ -17,6 +17,6 @@ export function* fetchUserInfo() {
     }
 }
 
-export default function* userData() {
-    yield takeLatest(USER_GET_USER_INFO, fetchUserInfo);
+export default function* watchGetUserInfoEvent() {
+    yield takeEvery(USER_GET_USER_INFO, fetchUserInfo);
 }

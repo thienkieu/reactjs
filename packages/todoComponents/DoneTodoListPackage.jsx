@@ -21,11 +21,7 @@ class DoneTodoListPackage extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log('DoneToDolist ');
-    console.log('state ');
-    console.log(state);
     return {
-
     };
 }
 

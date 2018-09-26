@@ -1,0 +1,8 @@
+{
+    type: 'ADD_TODO',
+    payload: {
+            text:"sdfs1",
+            location:"sdfsdf",
+            description:"sdfsdf",
+        }
+}

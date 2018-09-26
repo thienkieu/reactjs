@@ -1,0 +1,15 @@
+.header {
+    background: blue;
+    color: white;
+}
+
+.sectionContent {
+    margin: 0 auto;
+    width: 1200px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.footer {
+
+}

@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import getStore from '../../store';
+import getStore from '../../core/store';
 import { Hello } from "../../typescript/Hello.tsx";
 import { connect } from 'react-redux'
 
 class DoneTodoList extends Component {
 
     render() {
-        console.log(getStore().getState());
-        console.log('render DoneToDoLIst');
         return (
             <div>
                 This is done list
@@ -26,11 +24,7 @@ class DoneTodoList extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log('DoneToDolist ');
-    console.log('state ');
-    console.log(state);
     return {
-
     };
 }
 

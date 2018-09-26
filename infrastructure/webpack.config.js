@@ -2,35 +2,35 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-require("babel-polyfill");
 
 const APP_DIR = path.resolve(path.dirname(__dirname));
 
 module.exports = {
     entry: {
-        app: APP_DIR + '/src/app.js',
+        app: APP_DIR + '/src/core/App.jsx',
     },
     mode: 'development',
     devtool: 'inline-source-map',
     devServer: {
-        contentBase: APP_DIR + '/dist' 
+        contentBase: APP_DIR + '/dist',
+        historyApiFallback: true
     },
     plugins: [
         new HtmlWebpackPlugin({
             title: 'Output Management',
-            inject: false,
+            inject: 'body',
             appMountId: 'app',
             hash: true,
-            template: require('html-webpack-template'),
+            template: APP_DIR + '/src/core/index.html', //require('html-webpack-template'),
             filename: 'index.html',
-            appMountHtmlSnippet: '<div class="app-spinner"><i class="fa fa-spinner fa-spin fa-5x" aria-hidden="true"></i></div>',
+            /*appMountHtmlSnippet: '<div class="app-spinner"><i class="fa fa-spinner fa-spin fa-5x" aria-hidden="true"></i></div>',
             headHtmlSnippet: '<style>div.app-spinner {position: fixed;top:50%;left:50%;}</style >',
-            bodyHtmlSnippet: '<custom-element></custom-element>',
+            bodyHtmlSnippet: '<custom-element></custom-element>',*/
             baseHref: '/',
 
         }),
         new ExtractTextPlugin({
-            filename: '/css/[name].[chunkhash].bundle.css',
+            filename: '[name].[chunkhash].bundle.css',
             disable: false,
             allChunks: true
         }),
@@ -55,8 +55,16 @@ module.exports = {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    use: ['css-loader']
-                })
+                    use: [
+                        {
+                            loader: 'typings-for-css-modules-loader',
+                            options: {
+                                modules: true,
+                                namedExport: true
+                            }
+                        }
+                    ]
+                })  
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
@@ -97,9 +105,10 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: [".ts", ".tsx", ".js"],
+        extensions: [".ts", ".tsx", ".js", ".css"],
         alias: {
-            todoPackage: path.resolve(path.dirname(__dirname)+'/packages/todoComponents')
+            todoPackage: path.resolve(path.dirname(__dirname)+'/packages/todoComponents'),
+            store$: path.resolve(path.dirname(__dirname)+'/src/core/store.js')
         }
     }
 };

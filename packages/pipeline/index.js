@@ -1,5 +1,5 @@
 var Pipline = {
-    addPiplineAction: function(name, callback, topOfThePipeline) {
+    addPipelineHandler: function(name, callback, topOfThePipeline) {
         this.pipelines = this.pipelines || {};
 
         var list = this.pipelines[name] = this.pipelines[name] || [];

@@ -12,3 +12,7 @@
     background: url('./icon.png') repeat no-repeat;
     background: url('./thien.jpg') repeat no-repeat;
 }
+
+.app {
+    color: red;
+}
