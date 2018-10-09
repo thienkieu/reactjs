@@ -1,12 +1,12 @@
-import { fromJS } from 'immutable';
+import { fromJS } from 'libs/index';
 
-import { USER_GET_USER_INFO, USER_LOADED_USER_INFO } from '../constants/actionTypes';
+import { USER_GET_USER_INFO, USER_LOADED_USER_INFO } from '../../constants/actionTypes';
 
 export const initialState = fromJS({
     username: '',
 });
 
-export default function userAppReducer(state = initialState, action) {
+const user = function(state = initialState, action) {
     switch(action.type) {
         case USER_GET_USER_INFO: {
             return {
@@ -25,3 +25,9 @@ export default function userAppReducer(state = initialState, action) {
         
     }
 }
+
+const userReducer = {
+    user
+}
+
+export default userReducer;

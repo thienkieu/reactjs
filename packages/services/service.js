@@ -1,4 +1,4 @@
-import _ from 'underscore';
+import { _ } from 'libs/index';
 
 // This class to manage the listening and firing  of event
 

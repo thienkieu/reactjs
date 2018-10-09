@@ -4,14 +4,16 @@ import createSagaMiddleware from 'redux-saga';
 import { createBrowserHistory } from 'history';
 import { connectRouter, routerMiddleware , push } from 'connected-react-router';
 
-import createReducer from './reducer';
-import { watchGetUserInfoEvent } from './saga';
+import { sagaMiddleware, initSaga, injectSage } from '../../infrastructure/saga/index';
+import { initReducer, injectReducer } from '../../infrastructure/reducer/index';
+import initCoreModule from 'coreModule/DataManager/index';
+import initUserModule from 'userModule/DataManager/index';
+import initThemeModule from 'themeModule/DataManager/index';
 
 const history = createBrowserHistory();
-const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
-    connectRouter(history)(createReducer()),
+    connectRouter(history)(()=>{}),
     composeWithDevTools(),
     compose(
         applyMiddleware(
@@ -21,10 +23,14 @@ const store = createStore(
     )
 );
 
-store.runSaga = sagaMiddleware.run;
-store.injectedReducers = {};
-store.injectedSagas = {};
-store.runSaga(watchGetUserInfoEvent);
+store.history = history;
+
+initReducer(store);
+initSaga(store);
+
+initCoreModule(store);
+initUserModule(store);
+initThemeModule(store);
 
 function getStore() {
     return store;
@@ -36,13 +42,12 @@ export function getHistory() {
     return history;
 }
 
-
-const event = {
+const getUserRepo = {
     type: 'USER_GET_USER_INFO',
     payload: {
         username: 'thienkieu'
     }
 }
+store.dispatch(getUserRepo);
 
-store.dispatch(event);
 //store.dispatch(push('/abc'));

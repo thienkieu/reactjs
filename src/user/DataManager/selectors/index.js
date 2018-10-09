@@ -1,9 +1,10 @@
 import { createSelector } from 'reselect';
-import { initialState } from '../reducers/index';
-import getStore from '../../core/store';
+import { initialState } from '../reducer/index';
+import getStore from '../../../core/store';
 
-const selectUser = () => {
-    return getStore().getState().userAppReducer;
+const selectUser = (state) => {
+    console.log(state);
+    return state.userModule.user;
 }
 
 const makeSelectUser = () => {

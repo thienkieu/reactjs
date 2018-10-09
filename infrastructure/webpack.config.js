@@ -62,7 +62,23 @@ module.exports = {
                                 modules: true,
                                 namedExport: true
                             }
-                        }
+                        },
+                    ]
+                })  
+            },
+            {
+                test: /\.scss$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: [
+                        {
+                            loader: 'typings-for-css-modules-loader',
+                            options: {
+                                modules: true,
+                                namedExport: true
+                            }
+                        },
+                        'sass-loader'
                     ]
                 })  
             },
@@ -94,6 +110,15 @@ module.exports = {
                 }
             },
             {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+                query: {
+                    presets: ['es2015', 'react'],
+                    plugins:[ 'transform-object-rest-spread']
+                }
+            },
+            {
                 test: /\.tsx?$/,
                 use: [{
                     loader:   'ts-loader',
@@ -105,10 +130,18 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: [".ts", ".tsx", ".js", ".css"],
+        extensions: [".ts", ".tsx", ".js", ".scss",".css"],
         alias: {
-            todoPackage: path.resolve(path.dirname(__dirname)+'/packages/todoComponents'),
-            store$: path.resolve(path.dirname(__dirname)+'/src/core/store.js')
+            todoPackage: path.resolve(APP_DIR+'/packages/todoComponents'),
+            store$: path.resolve(APP_DIR+'/src/core/store.js'),
+            services: path.resolve(APP_DIR+'/packages/services'),
+            themeProvider$: path.resolve(APP_DIR+'/packages/theme/ThemeProvider.js'),
+            ui: path.resolve(APP_DIR+'/packages/ui'),
+            libs: path.resolve(APP_DIR+'/packages/libs'),
+            infrastructure: path.resolve(APP_DIR+'/infrastructure'),
+            coreModule: path.resolve(APP_DIR+'/src/core'),
+            userModule: path.resolve(APP_DIR+'/src/user'),
+            themeModule: path.resolve(APP_DIR+'/src/themes')
         }
     }
 };
