@@ -8,7 +8,7 @@ import { sagaMiddleware, initSaga, injectSage } from '../../infrastructure/saga/
 import { initReducer, injectReducer } from '../../infrastructure/reducer/index';
 import initCoreModule from 'coreModule/DataManager/index';
 import initUserModule from 'userModule/DataManager/index';
-import initThemeModule from 'themeModule/DataManager/index';
+import initThemeModule from 'themeModule/initailize';
 
 const history = createBrowserHistory();
 

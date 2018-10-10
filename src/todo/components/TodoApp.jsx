@@ -22,7 +22,4 @@ class TodoApp extends React.Component  {
     }
 }
 
-export default TodoApp;
-
-
-
+export default withTheme(TodoApp);

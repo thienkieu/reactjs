@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 import ThemeProvider from 'themeProvider';
-import { getSelectedTheme } from './DataManager/index';
+import getSelectedTheme from '../query/getSelectedTheme';
+
+import ThemeSelection from './ThemeSelection';
 
 interface Props {
     theme: any,
@@ -17,6 +19,8 @@ class ThemeManager extends React.Component<Props,{}> {
     }
 
     componentWillMount() {
+        //need to checkout user login or not 
+        // if not login we need to fetch user or change to login page => 
         //logService.log('ThemeManager --- componentWillMount');
     }
 
@@ -24,7 +28,9 @@ class ThemeManager extends React.Component<Props,{}> {
         console.log(this.props);
         return (
             <ThemeProvider theme={this.props.theme}>
-                {this.props.children}
+                <ThemeSelection>
+                    {this.props.children}
+                </ThemeSelection>
             </ThemeProvider>
         )
     }

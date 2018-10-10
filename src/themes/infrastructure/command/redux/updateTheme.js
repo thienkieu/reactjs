@@ -3,7 +3,6 @@ const initialState = {
     backgroundColor: 'red',
 }
 
-
 function theme(state = initialState, action) {
     switch (action.type) {
         case 'updateTheme': 

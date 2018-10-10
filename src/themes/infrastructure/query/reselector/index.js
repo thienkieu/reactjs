@@ -1,7 +1,6 @@
 import { createSelector } from 'reselect';
 
 const selectTheme = (state) => {
-    console.log(state);
     return state.themeModule;
 }
 

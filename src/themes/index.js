@@ -1,5 +1,7 @@
-import PublicLayout from './default/PublicLayout';
-import PrivateLayout from './default/PrivateLayout';
-import ThemeManager from './ThemeManager';
+import PublicLayout from './component/PublicLayout';
+import PrivateLayout from './component/PrivateLayout';
+import ThemeManager from './component/ThemeManager';
+import ThemeSelection from './component/ThemeSelection';
+import initThemeModule from './initailize'
 
-export { PublicLayout, PrivateLayout, ThemeManager }
+export { PublicLayout, PrivateLayout, ThemeManager, initThemeModule, ThemeSelection }
