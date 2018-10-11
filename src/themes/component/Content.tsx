@@ -6,10 +6,10 @@ interface Props {
 }
 
 @withTheme
-class PrivateLayout extends React.Component<Props> {
+class Content extends React.Component<Props> {
     render() {
         return this.props.children;
     }
 };
 
-export default PrivateLayout;
+export default Content;

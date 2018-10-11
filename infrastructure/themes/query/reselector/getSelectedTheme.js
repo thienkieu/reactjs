@@ -1,11 +1,8 @@
 import { createSelector } from 'reselect';
-
-const selectTheme = (state) => {
-    return state.themeModule;
-}
+import getTheme from './getTheme';
 
 const makeSelectTheme = () => {
-    return createSelector(selectTheme, theme => {
+    return createSelector(getTheme, theme => {
         return theme;
     });
 }
@@ -14,4 +11,4 @@ const getSelectedTheme = (state) => {
     const getSelectedThemeSelectore =  makeSelectTheme();
     return getSelectedThemeSelectore(state);
 }
-export { getSelectedTheme };
+export default getSelectedTheme;

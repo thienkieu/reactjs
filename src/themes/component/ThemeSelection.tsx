@@ -7,53 +7,50 @@ import {
     InputLabel,
 } from 'ui/Select/index';
 
-import listTheme from '../domain/getListTheme';
+import getActiveTheme from '../query/getActiveTheme';
+import { _ } from 'libs/index';
+import getListThemes from '../query/getListThemes';
+import changeTheme from '../domain/changeTheme';
 
 interface Props {
+    activeTheme: string,
+    supportThemes: {},
 }
 
-class ThemeSelection extends React.Component<Props,{}> {
-    state = {
-        age: '',
-        name: 'hai',
-    };
+class ThemeSelection extends React.Component<Props,any> {
+    constructor(props: Props){
+        super(props);
+        console.log(this.props);
+        this.state = {
+            active: this.props.activeTheme,
+        }
+    }
     
     handleChange = (event: any) => {
-        this.setState({ [event.target.name]: event.target.value });
+        this.setState({ active: event.target.value });
+        changeTheme(event.target.value);
     };
-
-
-    componentWillMount() {
-        //need to checkout user login or not 
-        // if not login we need to fetch user or change to login page => 
-        //logService.log('ThemeManager --- componentWillMount');
-    }
 
     render() {
         return (
             <FormControl>
-                <InputLabel htmlFor="age-simple">Age</InputLabel>
+                <InputLabel htmlFor="theme-selection">Select theme</InputLabel>
                 <Select
-                    value={this.state.age}
+                    value={this.state.active}
                     onChange={this.handleChange}
                     inputProps={{
-                        name: 'age',
-                        id: 'age-simple',
+                        name: 'theme-selection',
+                        id: 'theme-selection',
                     }}
                 >
-                    <MenuItem value="">
-                        <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
+                    {
+                        _.map(this.props.supportThemes,(value: any, key: any)=>{
+                            return (<MenuItem value={key}>{key}</MenuItem>);
+                        })
+                    }
                 </Select>
             </FormControl>
         )
-    }
-
-    renderMenuItem() {
-        
     }
 };
 

@@ -3,7 +3,7 @@ import { push } from 'connected-react-router';
 
 import getStore from '../core/store';
 import { InputText } from 'ui/Input/index';
-
+import { changeTheme } from 'themeModule/index';
 const login = () => {
     //getStore().dispatch(push('/login'));
 
@@ -50,16 +50,7 @@ class Hello  extends React.Component<HelloProps>{
     }
 
     changeBackground() {
-        const updateTheme = {
-            type: 'updateTheme',
-            payload: {
-               theme: { 
-                   backgroundColor: this.state.background,
-                   color: this.state.color,
-                }
-            }
-        }
-        getStore().dispatch(updateTheme);
+        changeTheme(this.state.background);
     }
 
     render() {

@@ -1,21 +1,21 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { compose } from 'redux';
 
 import ThemeProvider from 'themeProvider';
-import getSelectedTheme from '../query/getSelectedTheme';
 
+import getActiveTheme from '../query/getActiveTheme';
+import getListThemes from '../query/getListThemes';
 import ThemeSelection from './ThemeSelection';
 
 interface Props {
-    theme: any,
+    activeTheme: string,
+    supportThemes: any,
     children: React.ReactNode,
-    context: any,
 }
 
 class ThemeManager extends React.Component<Props,{}> {
-    constructor(props: Props, context: any){
-        super(props, context);
+    constructor(props: Props){
+        super(props);
     }
 
     componentWillMount() {
@@ -25,20 +25,21 @@ class ThemeManager extends React.Component<Props,{}> {
     }
 
     render() {
-        console.log(this.props);
         return (
-            <ThemeProvider theme={this.props.theme}>
-                <ThemeSelection>
-                    {this.props.children}
-                </ThemeSelection>
+            <ThemeProvider theme={this.props.supportThemes[this.props.activeTheme]}>
+                {this.props.children}
             </ThemeProvider>
         )
     }
 };
 
 const mapStateToProps = (state: any) => { 
-    const theme = getSelectedTheme(state);
-    return theme;
+    const activeTheme = getActiveTheme(state);
+    const supportThemes = getListThemes(state);
+    return {
+        activeTheme,
+        supportThemes,
+    };
 };
 
 export default connect(mapStateToProps) (ThemeManager);
