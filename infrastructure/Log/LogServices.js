@@ -1,16 +1,14 @@
-import MOWEDE from 'services/registry';
-
-const logService = MOWEDE.services.register('logService');
 const LogService = {
-    log: function(value) {
+    log: function(value, functionName = '') {
+        let prefix = functionName? functionName+': ': '';
         if (typeof value === 'string') {
-            console.log(value);
+            console.log(prefix + value);
         } if (typeof value === 'object') {
             var text = JSON.stringify(value);
-            console.log(text);
+            console.log(prefix + text);
         }
         
     }
 }
 
-logService.implement(LogService);
+export default LogService;

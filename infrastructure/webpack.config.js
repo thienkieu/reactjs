@@ -7,7 +7,7 @@ const APP_DIR = path.resolve(path.dirname(__dirname));
 
 module.exports = {
     entry: {
-        app: APP_DIR + '/src/core/App.jsx',
+        app: APP_DIR + '/src/index.js',
     },
     mode: 'development',
     devtool: 'inline-source-map',

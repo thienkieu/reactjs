@@ -41,6 +41,7 @@
     "@material-ui/core": "^3.1.2",
     "@material-ui/icons": "^3.0.1",
     "connected-react-router": "^4.5.0",
+    "eventbusjs": "^0.2.0",
     "immutable": "^3.8.2",
     "lodash": "^4.17.10",
     "prop-types": "^15.6.2",

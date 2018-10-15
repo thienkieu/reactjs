@@ -1,7 +1,6 @@
 import * as React from "react";
 import { push } from 'connected-react-router';
 
-import getStore from '../core/store';
 import { InputText } from 'ui/Input/index';
 import { changeTheme } from 'themeModule/index';
 const login = () => {
@@ -13,11 +12,11 @@ const login = () => {
             theme: { color: 'blue'},
         }
     }
-    getStore().dispatch(updateTheme);
+   // getStore().dispatch(updateTheme);
 }
 
 const register = () => {
-    getStore().dispatch(push('/register'));
+    //getStore().dispatch(push('/register'));
 }
 
 const onChange = (event: any) => {

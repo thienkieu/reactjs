@@ -30,9 +30,14 @@ window.addEventListener('beforeunload', function (event) {
 var stack = [];
 
 MOWEDE.services = {
-    register : function(name) {
+    register : function(name, serviceImplement) {
         if (services[name] === undefined) {
-            services[name] = new Service(name);
+            let serviceInstance = new Service(name);
+            if (serviceImplement) {
+                serviceInstance.implement(serviceImplement);
+            }
+            
+            services[name] = serviceInstance;
         }
         return services[name];
     },

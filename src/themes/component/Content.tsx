@@ -8,7 +8,21 @@ interface Props {
 @withTheme
 class Content extends React.Component<Props> {
     render() {
-        return this.props.children;
+        let style = {
+            background: 'gray',
+            display: 'flex',
+            alignItems: 'center',
+            paddingLeft: '15px',
+            paddingRight: '15px',
+            justifyContent: 'center',
+            minHeight: 'calc(100vh - 140px)',
+        };
+
+        return (
+            <div style={style}>
+                {this.props.children}
+            </div>
+        );
     }
 };
 

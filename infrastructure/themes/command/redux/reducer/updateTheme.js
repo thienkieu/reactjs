@@ -1,4 +1,4 @@
-import { updateThemeConstant } from './constant';
+import { updateThemeConstant } from '../constant';
 
 const initThemeData = function(activeTheme, supportThemes) {
     let themeReducer ={

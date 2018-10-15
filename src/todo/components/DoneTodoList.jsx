@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import getStore from '../../core/store';
 import { Hello } from "../../typescript/Hello.tsx";
 import { connect } from 'react-redux'
 

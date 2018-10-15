@@ -1,6 +1,0 @@
-{
-    type: 'USER_GET_USER_INFO',
-    payload: {
-            username: "thienkieu"
-        }
-}

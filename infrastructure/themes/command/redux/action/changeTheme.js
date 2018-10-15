@@ -1,5 +1,5 @@
-import { updateThemeConstant } from './constant';
-import { getStore } from '../../../redux/store';
+import { updateThemeConstant } from '../constant';
+import { getStore } from '../../../../redux/store';
 
 const changeTheme = function(activeTheme){
     const command = {

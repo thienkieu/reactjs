@@ -10,7 +10,7 @@ import {
 import getActiveTheme from '../query/getActiveTheme';
 import { _ } from 'libs/index';
 import getListThemes from '../query/getListThemes';
-import changeTheme from '../domain/changeTheme';
+import changeTheme from '../command/changeTheme';
 
 interface Props {
     activeTheme: string,

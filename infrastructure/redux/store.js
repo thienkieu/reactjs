@@ -5,7 +5,7 @@ import { createBrowserHistory } from 'history';
 import { connectRouter, routerMiddleware , push } from 'connected-react-router';
 
 import { sagaMiddleware, initSaga, injectSage } from '../saga/index';
-import { initReducer, injectReducer } from '../reducer/index';
+import { initReducer, injectReducer } from './index';
 
 const history = createBrowserHistory();
 
