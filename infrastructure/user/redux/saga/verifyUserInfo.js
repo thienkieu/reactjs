@@ -2,10 +2,10 @@
  * wil use sage to implement call api
  */
 
-const getUserInfo = function(userModel) {
+const verifyUserInfo = function(userModel) {
     return {
         status: 'ok',
     }
 }
 
-export default getUserInfo;
+export default verifyUserInfo;

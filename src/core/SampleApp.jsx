@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { Route, Switch } from 'react-router';
 import { ConnectedRouter } from 'connected-react-router';
 import _ from 'lodash';
-import getStore, { getHistory } from './store';
+import getStore, { getHistory } from 'store';
 import TodoApp from '../todo/components/TodoApp.jsx';
 import { DoneTodoListPackage, OpenTodoListPackage } from 'todoPackage';
 import { NonFooterApp } from './components/NonFooterApp';

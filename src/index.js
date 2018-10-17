@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import initServices from './initializers/services';
 initServices();
 
-import { getStore, getHistory } from 'infrastructure/redux/store';
+import { getStore, getHistory } from 'store';
 import * as initDefaultModules from './initializers/initDefaultModules';
 
 import MainApp from './core/MainApp';

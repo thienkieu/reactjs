@@ -6,7 +6,7 @@ import { Route, Switch } from 'react-router';
 import { ConnectedRouter } from 'connected-react-router';
 import _ from 'lodash';
 
-import getStore, { getHistory } from './store';
+import getStore, { getHistory } from 'store';
 import ThemeProvider from 'themeProvider';
 import SiteURL from '../initializers/routes';
 import * as Services from '../initializers/services';

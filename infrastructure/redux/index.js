@@ -1,5 +1,6 @@
-import { combineReducers } from 'redux';
+import { combineReducers, compose } from 'redux';
 import { connectRouter } from 'connected-react-router';
+import { connect } from 'react-redux';
 
 const createReducer = function(reducers, history) { 
     return connectRouter(history)(combineReducers({
@@ -19,6 +20,6 @@ const injectReducer = function(store,name, reducers) {
     }
 }
 
-export { initReducer, injectReducer, createReducer }
+export { initReducer, injectReducer, createReducer, connect, compose }
 
 

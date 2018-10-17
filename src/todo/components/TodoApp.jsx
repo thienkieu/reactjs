@@ -3,8 +3,14 @@ import OpenTodoList from './OpenTodoList.jsx';
 import DoneTodoList from './DoneTodoList.jsx';
 import { DoneTodoListPackage, OpenTodoListPackage } from 'todoPackage';
 import { withTheme } from 'libs/index';
+import redirectToLogin from '../proxy/redirectToLogin';
 
-class TodoApp extends React.Component  {
+class TodoApp extends React.Component{
+    constructor(props){
+        super(props);
+        redirectToLogin();
+    }
+    
     render() {
         const style={
             background: this.props.theme.backgroundColor,

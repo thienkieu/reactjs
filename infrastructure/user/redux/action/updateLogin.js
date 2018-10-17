@@ -1,13 +1,14 @@
 import { updateLoginConstant } from '../constant';
-import { getStore } from '../../../../redux/store';
+import { getStore } from 'store';
 
 const updateLogin = function(response){
     const command = {
         type: updateLoginConstant,
         payload: {
-            status: response.status
+            status: response
         }
     };
+    
     getStore().dispatch(command);
 }
 

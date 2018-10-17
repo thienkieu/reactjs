@@ -1,29 +1,25 @@
 import * as React from "react";
 import { withTheme } from 'libs/index';
+import styled from 'styled-components';
 
-interface Props {
-    children: React.ReactNode
+const ContentStyleComponent = styled('div')`
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+`;
+
+interface ContentProp{
+    style: Object,
+    className: string,
 }
-
-@withTheme
-class Content extends React.Component<Props> {
+class Content extends React.Component<ContentProp> {
     render() {
-        let style = {
-            background: 'gray',
-            display: 'flex',
-            alignItems: 'center',
-            paddingLeft: '15px',
-            paddingRight: '15px',
-            justifyContent: 'center',
-            minHeight: 'calc(100vh - 140px)',
-        };
-
         return (
-            <div style={style}>
+            <ContentStyleComponent style={this.props.style} className={this.props.className}>
                 {this.props.children}
-            </div>
+            </ContentStyleComponent>
         );
     }
 };
 
-export default Content;
+export default withTheme(Content);

@@ -1,7 +1,7 @@
 import EventManager from 'infrastructure/event/eventManager';
 
-import getUserInfo from '../query/getUserInfo';
-import updateLogin from '../command/updateLogin';
+import getUserInfo from '../proxy/getUserInfo';
+import updateLogin from '../proxy/updateLogin';
 
 const loginService = function(){
     handleLogin = function(){

@@ -1,4 +1,4 @@
-import { getStore, getHistory } from   'infrastructure/redux/store';
+import { getStore, getHistory } from   'store';
 
 import initCoreModule from 'coreModule/DataManager/index';
 import initUserModule from 'userModule/initailize';

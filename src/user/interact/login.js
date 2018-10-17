@@ -1,8 +1,8 @@
 import MOWEDE from 'services/registry';
 import { sequenceflow } from 'infrastructure/flow/index';
 
-import getUserInfo from '../query/getUserInfo';
-import updateLogin from '../command/updateLogin';
+import getUserInfo from '../proxy/getUserInfo';
+import updateLogin from '../proxy/updateLogin';
 
 /**
  * 1. call api to get token

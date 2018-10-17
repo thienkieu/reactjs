@@ -1,8 +1,9 @@
 import * as React from "react";
 import { withTheme } from 'libs/index';
-import Header from "./Header";
+import Sticky from "./Sticky";
+import Header from './Header';
 import Footer from './Footer';
-import Content from "./Content";
+import PageContent from "./PageContent";
 
 interface Props {
     children: React.ReactNode,
@@ -12,21 +13,16 @@ interface Props {
 @withTheme
 class PrivateLayout extends React.Component<Props> {
     render() {
-        const style={
-            background: this.props.theme.backgroundColor,
-            width: '900px',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-        }
-
         return (
-            <div style={style}>
-                <Header/>
-                <Content>
+            <div>
+                <Header>
+                    <Sticky/>
+                </Header>
+                <PageContent>
                     {this.props.children}
-                </Content>
-                <Footer/>
-            </div>
+                </PageContent>
+                <Footer/> 
+            </div> 
         );
     }
 };

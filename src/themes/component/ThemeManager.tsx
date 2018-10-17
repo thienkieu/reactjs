@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
 
+import { connect } from 'infrastructure/redux/index';
 import ThemeProvider from 'themeProvider';
-
-import getActiveTheme from '../query/getActiveTheme';
-import getListThemes from '../query/getListThemes';
+import getActiveTheme from '../proxy/getActiveTheme';
+import getListThemes from '../proxy/getListThemes';
 import ThemeSelection from './ThemeSelection';
 
 interface Props {

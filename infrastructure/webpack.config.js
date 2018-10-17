@@ -133,7 +133,7 @@ module.exports = {
         extensions: [".ts", ".tsx", ".js", ".scss",".css"],
         alias: {
             todoPackage: path.resolve(APP_DIR+'/packages/todoComponents'),
-            store$: path.resolve(APP_DIR+'/src/core/store.js'),
+            store$: path.resolve(APP_DIR+'/infrastructure/redux/store.js'),
             services: path.resolve(APP_DIR+'/packages/services'),
             themeProvider$: path.resolve(APP_DIR+'/packages/theme/ThemeProvider.js'),
             ui: path.resolve(APP_DIR+'/packages/ui'),

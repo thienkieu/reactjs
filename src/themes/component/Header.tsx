@@ -1,26 +1,26 @@
 import * as React from "react";
 import { withTheme } from 'libs/index';
-
+import Content from "./Content";
+import styled from 'styled-components';
 interface Props {
 }
 
-@withTheme
+const TopElement = styled('div')`
+    background: gray;
+    min-height: 200px;
+    display: block;
+`
 class Header extends React.Component<Props> {
     render() {
-        let style = {
-            minHeight: '70px',
-            background: 'gray',
-            display: 'flex',
-            alignItems: 'center',
-            paddingLeft: '15px',
-            paddingRight: '15px',
-            justifyContent: 'center',
-        };
-
         return (
-            <div style={style}>this is header</div>
+            <Content>
+                <header>
+                    <TopElement>this is top element</TopElement>
+                    {this.props.children}
+                </header>
+            </Content>   
         );
     }
 };
 
-export default Header;
+export default withTheme(Header);

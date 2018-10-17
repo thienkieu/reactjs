@@ -1,3 +1,3 @@
-import initThemeModule from 'infrastructure/themes/command/index';
+import initThemeModule from 'infrastructure/themes/index';
 
 export default initThemeModule;

@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { connect } from 'infrastructure/redux/index';
+
 import {
     Select,
     FormControl,
@@ -7,10 +9,10 @@ import {
     InputLabel,
 } from 'ui/Select/index';
 
-import getActiveTheme from '../query/getActiveTheme';
+import getActiveTheme from '../proxy/getActiveTheme';
 import { _ } from 'libs/index';
-import getListThemes from '../query/getListThemes';
-import changeTheme from '../command/changeTheme';
+import getListThemes from '../proxy/getListThemes';
+import changeTheme from '../proxy/changeTheme';
 
 interface Props {
     activeTheme: string,
@@ -54,5 +56,13 @@ class ThemeSelection extends React.Component<Props,any> {
     }
 };
 
+const mapStateToProps = (state: any) => { 
+    const activeTheme = getActiveTheme(state);
+    const supportThemes = getListThemes(state);
+    return {
+        activeTheme,
+        supportThemes,
+    };
+};
 
-export default ThemeSelection;
+export default connect(mapStateToProps) (ThemeSelection);

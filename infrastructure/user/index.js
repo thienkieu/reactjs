@@ -1,5 +1,5 @@
-import updateLogin from './command/redux/action/updateLogin';
-import getUserInfo from './query/getUserInfo';
+import updateLogin from './redux/action/updateLogin';
+import getUserInfo from './service/getUserInfo';
 
 export {
     updateLogin,
