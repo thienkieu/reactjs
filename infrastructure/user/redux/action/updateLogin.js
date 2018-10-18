@@ -5,7 +5,8 @@ const updateLogin = function(response){
     const command = {
         type: updateLoginConstant,
         payload: {
-            status: response
+            result: response,
+            isLogin: true,
         }
     };
     

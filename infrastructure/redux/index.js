@@ -1,6 +1,7 @@
 import { combineReducers, compose } from 'redux';
 import { connectRouter } from 'connected-react-router';
 import { connect } from 'react-redux';
+import redirectPage from './redirectPage';
 
 const createReducer = function(reducers, history) { 
     return connectRouter(history)(combineReducers({
@@ -20,6 +21,6 @@ const injectReducer = function(store,name, reducers) {
     }
 }
 
-export { initReducer, injectReducer, createReducer, connect, compose }
+export { initReducer, injectReducer, createReducer, connect, compose, redirectPage }
 
 

@@ -24,7 +24,8 @@ const user = function(state = initialState, action) {
         case updateLoginConstant : {
             return {
                 ...state,
-                loginStatus: action.payload.status
+                repository: action.payload.result,
+                isLogin: action.payload.isLogin,
             }
         }
         default:

@@ -1,8 +1,12 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import login from '../../interact/login';
 import { TextField } from 'ui/Input/index';
 import { Button } from 'ui/Button/index';
+
+import login from '../../interact/login';
+import isLogin from '../../proxy/isLogin';
+import redirectToHome from '../../proxy/redirectToHome';
+import { connect } from 'infrastructure/redux/index';
 
 const LoginWrapper = styled('div')`
     box-shadow: 0 10px 20px rgba(38,50,56,.15);
@@ -43,6 +47,7 @@ const LoginButton = styled(Button)`
 
 interface LoginFormProps {
     handleLogin: Function,
+    loginStatus: boolean,
 }
 
 class LoginForm extends React.Component<LoginFormProps,any> {
@@ -56,8 +61,16 @@ class LoginForm extends React.Component<LoginFormProps,any> {
         
         this.onchangeEmail = this.onchangeEmail.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
+        this.lockLoginButton = this.lockLoginButton.bind(this);
         this.onLogin = this.onLogin.bind(this);
+        
+        this.redirectToHomePage(this.props);
+    }
 
+    redirectToHomePage(props: any) {
+        if (props.loginStatus === true) {
+            redirectToHome();
+        }
     }
 
     onchangeEmail(event: any) {
@@ -72,14 +85,24 @@ class LoginForm extends React.Component<LoginFormProps,any> {
         })
     }
 
-    onLogin(){
-        if (this.button.current.isRunning) return;
-        console.log(this.state);
+    lockLoginButton(){
         setTimeout(function(){
             this.setState({
-                onProcess: false,
-            })
-        }.bind(this),3000);
+                onProcess: true,
+            });
+        }.bind(this),200);
+    }
+
+    onLogin(){
+        if (this.button.current.isRunning) return;
+
+        this.button.current.isRunning = true;
+        this.lockLoginButton();
+        login(this.state.email, this.state.password);
+    }
+
+    componentWillReceiveProps(nextProps: any){
+        this.redirectToHomePage(nextProps);
     }
 
     render() {
@@ -118,13 +141,11 @@ class LoginForm extends React.Component<LoginFormProps,any> {
     private button = React.createRef<any>();
 };
 
-/*const mapStateToProps = (state: any) => { 
-    const activeTheme = getActiveTheme(state);
-    const supportThemes = getListThemes(state);
+const mapStateToProps = (state: any) => { 
+    const loginStatus = isLogin(state);
     return {
-        activeTheme,
-        supportThemes,
+        loginStatus,
     };
-};*/
+};
 
-export default LoginForm;
+export default connect(mapStateToProps)(LoginForm);

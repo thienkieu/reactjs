@@ -11,13 +11,14 @@ const history = createBrowserHistory();
 
 const store = createStore(
     connectRouter(history)(()=>{}),
-    composeWithDevTools(),
     compose(
         applyMiddleware(
             routerMiddleware(history),
-            sagaMiddleware
-        )
-    )
+            sagaMiddleware,
+        ),
+        composeWithDevTools(),
+    ),
+    
 );
 
 store.history = history;
