@@ -17,5 +17,6 @@ const StyledButton = styled(DefaultButton)`
 
 export {
     DefaultButton,
-    StyledButton
+    StyledButton,
+    Button,
 }

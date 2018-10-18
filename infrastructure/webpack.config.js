@@ -88,7 +88,7 @@ module.exports = {
                     loader: 'url-loader',
                     options: {
                         limit: 8000,
-                        name: '/images/[hash]-[name].[ext]'
+                        name: 'images/[hash]-[name].[ext]'
                     }
                 }]
             },
@@ -141,7 +141,8 @@ module.exports = {
             infrastructure: path.resolve(APP_DIR+'/infrastructure'),
             coreModule: path.resolve(APP_DIR+'/src/core'),
             userModule: path.resolve(APP_DIR+'/src/user'),
-            themeModule: path.resolve(APP_DIR+'/src/themes')
+            themeModule: path.resolve(APP_DIR+'/src/themes'),
+            initializers: path.resolve(APP_DIR+'/src/initializers'),
         }
     }
 };

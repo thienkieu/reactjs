@@ -3,8 +3,7 @@ import { Content } from '../core/components/Content';
 import { Footer } from '../core/components/footer/Footer';
 import { Header } from '../core/components/header/Header';
 import { PublicLayout, PrivateLayout } from '../themes/index';
-import LoginForm from 'userModule/components/LoginForm';
-
+import LoginPage from 'userModule/components/Login/LoginPage';
 
 const SiteURL = {
     Home: {
@@ -18,8 +17,8 @@ const SiteURL = {
         path: '/contact'
     },
     Login: {
-        ContentComponent: LoginForm,
-        Layout: PrivateLayout,
+        ContentComponent: LoginPage,
+        Layout: PublicLayout,
         path: '/login'
     },
     Register: {

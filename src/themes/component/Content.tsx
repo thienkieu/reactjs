@@ -3,7 +3,6 @@ import { withTheme } from 'libs/index';
 import styled from 'styled-components';
 
 const ContentStyleComponent = styled('div')`
-    width: 900px;
     margin-left: auto;
     margin-right: auto;
 `;

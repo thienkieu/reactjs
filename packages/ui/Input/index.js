@@ -11,4 +11,4 @@ const InputText = (props) => {
     )
 }
 
-export { InputText }
+export { InputText, TextField }
