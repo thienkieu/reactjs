@@ -1,5 +1,5 @@
 import { fromJS } from 'libs/index';
-import { updateLoginConstant } from '../constant';
+import { updateFailLoginConstant, updateSuccessLoginConstant, logoutConstant } from '../constant';
 
 //import { USER_GET_USER_INFO, USER_LOADED_USER_INFO } from '../../constants/actionTypes';
 
@@ -20,14 +20,55 @@ const user = function(state = initialState, action) {
                 id: action.payload.id,
                 profileUrl: action.payload.profileUrl,
             }
-        }*/
-        case updateLoginConstant : {
+        }
+        case updateSuccessLoginConstant : {
             return {
                 ...state,
-                repository: action.payload.result,
-                isLogin: action.payload.isLogin,
+                isLogin: true,
+                currentUser: action.payload.userInfo,
+                userRepo: action.payload.repo,
             }
         }
+        case updateFailLoginConstant: {
+            return {
+                ...state,
+                loginError: action.payload.errors,
+                isLogin: false,
+            }
+        }*/
+
+        default:
+            return state;
+        
+    }
+}
+
+const loginInfo = function(state = {} , action) {
+    switch(action.type) {
+        case updateSuccessLoginConstant : {
+            return {
+                ...state,
+                isLogin: true,
+                currentUser: action.payload.userInfo,
+                userRepo: action.payload.repo,
+            }
+        }
+        case updateFailLoginConstant: {
+            return {
+                ...state,
+                loginError: action.payload.errors,
+                isLogin: false,
+            }
+        }
+        case logoutConstant: {
+            return {
+                ...state,
+                isLogin: false,
+                currentUser: {},
+                userRepo: {},
+            }
+        }
+
         default:
             return state;
         
@@ -35,7 +76,8 @@ const user = function(state = initialState, action) {
 }
 
 const userReducer = {
-    user
+    users: user,
+    loginInfo,
 }
 
 export default userReducer;

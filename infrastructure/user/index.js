@@ -1,9 +1,11 @@
-import updateLogin from './redux/action/updateLogin';
 import getUserInfo from './service/getUserInfo';
-import isLogin from './selector/isLogin';
+import updateLoginResult from './service/updateLoginResult';
+import getLoginResult from './selector/getLoginResult';
+import logout from './service/logout';
 
 export {
-    updateLogin,
     getUserInfo,
-    isLogin,
+    getLoginResult,
+    updateLoginResult,
+    logout,
 }

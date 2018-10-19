@@ -19,7 +19,7 @@ function* fetchUserInfo() {
 }
 
 const getUserRepo = function*() {
-    yield takeEvery(updateLoginConstant, fetchUserInfo);
+    //yield takeEvery(updateLoginConstant, fetchUserInfo);
 }
 
 export default getUserRepo;

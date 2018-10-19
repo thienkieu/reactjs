@@ -1,11 +1,12 @@
 import 'whatwg-fetch';
 
-function parseJSON(response) {
+async function parseJSON(response) {
     if (response.status === 204 || response.status === 205) {
         return null;
     }
-
-    return response.json();
+    let json = await response.json();
+    json.isSuccess = true;
+    return json;
 }
 
 function checkStatus(response) {
@@ -18,8 +19,20 @@ function checkStatus(response) {
     throw error;
 }
 
+function handleError(e) {
+    return {
+        isSuccess: false,
+        errorInfo: {
+            email: 'email error',
+            password: 'password is incorrect',
+            e: e,
+        }
+    }
+}
+
 export default function request(url, options) {
     return fetch(url, options)
         .then(checkStatus)
-        .then(parseJSON);
+        .then(parseJSON)
+        .catch(handleError);
 }

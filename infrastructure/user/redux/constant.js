@@ -1,4 +1,9 @@
-const updateLoginConstant = 'updateLogin';
+const updateSuccessLoginConstant = 'updateSuccessLogin';
+const updateFailLoginConstant = 'updateFailLogin';
+const logoutConstant = 'logout';
+
 export {
-    updateLoginConstant,
+    updateSuccessLoginConstant,
+    updateFailLoginConstant,
+    logoutConstant,
 }

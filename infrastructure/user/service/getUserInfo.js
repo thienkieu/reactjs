@@ -1,11 +1,11 @@
 import getUserInfoAPI from '../api/getUserInfo';
-import getUserInfoSelector from '../selector/getUserInfo'
+import getUserInfoLocal from '../selector/getUserInfo'
 import { getStore } from 'store';
 
-const getUserInfo = async function(){
-    let userInfo = getUserInfoSelector(getStore().getState());
+const getUserInfo = async function(params){
+    let userInfo = getUserInfoLocal(getStore().getState());
     if (!userInfo) {
-        userInfo = await getUserInfoAPI();
+        userInfo = await getUserInfoAPI(params.email, params.password);
     }
     
     return userInfo;

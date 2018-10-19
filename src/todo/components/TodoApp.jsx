@@ -3,7 +3,7 @@ import OpenTodoList from './OpenTodoList.jsx';
 import DoneTodoList from './DoneTodoList.jsx';
 import { DoneTodoListPackage, OpenTodoListPackage } from 'todoPackage';
 import { withTheme } from 'libs/index';
-import { isLogin } from 'userModule/index';
+import { getLoginResult } from 'userModule/index';
 import { connect } from 'infrastructure/redux/index';
 
 import redirectToLogin from '../proxy/redirectToLogin';
@@ -14,13 +14,13 @@ class TodoApp extends React.Component{
         this.redirectToLoginPage(this.props);
     }
     
-    redirectToLoginPage(props: any) {
-        if (props.loginStatus !== true) {
+    redirectToLoginPage(props) {
+        if (props.loginInfo.isLogin !== true) {
             redirectToLogin();
         }
     }
 
-    componentWillReceiveProps(nextProps: any) {
+    componentWillReceiveProps(nextProps) {
         this.redirectToLoginPage(nextProps);
     }
     
@@ -42,9 +42,9 @@ class TodoApp extends React.Component{
 }
 
 const mapStateToProps = function(state){
-    const loginStatus = isLogin(state);
+    const loginInfo = getLoginResult(state);
     return {
-        loginStatus,
+        loginInfo,
     }
 }
 export default connect(mapStateToProps)(withTheme(TodoApp));

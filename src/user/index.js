@@ -1,4 +1,7 @@
-import isLogin from './proxy/isLogin';
+import getLoginResult from './proxy/getLoginResult';
+import logout from './proxy/logout';
+
 export {
-    isLogin,
+    getLoginResult,
+    logout,
 }

@@ -1,17 +1,17 @@
 import { createSelector } from 'reselect';
 
 const getUserModule = function(state){
-    return state.userModule;
+    return state.userModule.users;
 }
 const makeSelectorGetUserInfo = () => {
-    return createSelector(getUserModule, userModule => {
-        return userModule.currentUser;
+    return createSelector(getUserModule, users => {
+        return users.currentUser;
     });
 }
 
-const getUserInfoSelector = (state) => {
+const getUserInfoLocal = (state) => {
     const makeUserInfoSelector =  makeSelectorGetUserInfo();
     return makeUserInfoSelector(state);
 }
 
-export default getUserInfoSelector;
+export default getUserInfoLocal;

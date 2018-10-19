@@ -3,6 +3,8 @@ import { push } from 'connected-react-router';
 
 import { InputText } from 'ui/Input/index';
 import { changeTheme } from 'themeModule/index';
+import { logout } from 'userModule/index';
+
 const login = () => {
     //getStore().dispatch(push('/login'));
 
@@ -22,6 +24,11 @@ const register = () => {
 const onChange = (event: any) => {
     console.log(event);
     console.log(this);
+}
+
+const onLogout = () => {
+    console.log(logout);
+    logout();    
 }
 
 export interface HelloProps {
@@ -65,6 +72,8 @@ class Hello  extends React.Component<HelloProps>{
                 <button onClick={() => this.changeBackground()}> Change Theme color </button>
                 <br/>
                 <button onClick={register}> Register </button>
+
+                 <button onClick={onLogout}> Logout </button>
             </div>
         )
     }

@@ -2,11 +2,12 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { TextField } from 'ui/Input/index';
 import { Button } from 'ui/Button/index';
+import { connect } from 'infrastructure/redux/index';
 
 import login from '../../interact/login';
-import isLogin from '../../proxy/isLogin';
 import redirectToHome from '../../proxy/redirectToHome';
-import { connect } from 'infrastructure/redux/index';
+import getLoginResult from '../../proxy/getLoginResult';
+import updateLoginResult from '../../proxy/updateLoginResult';
 
 const LoginWrapper = styled('div')`
     box-shadow: 0 10px 20px rgba(38,50,56,.15);
@@ -47,7 +48,7 @@ const LoginButton = styled(Button)`
 
 interface LoginFormProps {
     handleLogin: Function,
-    loginStatus: boolean,
+    loginResult: any,
 }
 
 class LoginForm extends React.Component<LoginFormProps,any> {
@@ -68,7 +69,7 @@ class LoginForm extends React.Component<LoginFormProps,any> {
     }
 
     redirectToHomePage(props: any) {
-        if (props.loginStatus === true) {
+        if (props.loginResult.isLogin === true) {
             redirectToHome();
         }
     }
@@ -76,12 +77,16 @@ class LoginForm extends React.Component<LoginFormProps,any> {
     onchangeEmail(event: any) {
         this.setState({
             email: event.target.value,
+            onProcess: false,
+            emailError: '',
         })
     }
 
     onChangePassword(event: any) {
         this.setState({
             password: event.target.value,
+            emailPasword: '',
+            onProcess: false,
         })
     }
 
@@ -98,7 +103,28 @@ class LoginForm extends React.Component<LoginFormProps,any> {
 
         this.button.current.isRunning = true;
         this.lockLoginButton();
-        login(this.state.email, this.state.password);
+        const params = {
+            email: this.state.email,
+            password: this.state.password
+        }
+        
+        const handlerResponse  = async function(data: any) {
+            const result = await login(data);
+            this.button.current.isRunning = false;
+            
+            if (result.isSuccess){
+                updateLoginResult(result);
+            } else {
+                this.setState({
+                    onProcess: false,
+                    emailError: result.errorInfo.email,
+                    passwordError: result.errorInfo.password,
+                });
+            }
+            
+            
+        }.bind(this);
+        handlerResponse(params);
     }
 
     componentWillReceiveProps(nextProps: any){
@@ -119,6 +145,8 @@ class LoginForm extends React.Component<LoginFormProps,any> {
                         autoComplete="email"
                         margin="normal"
                         variant="outlined"
+                        error = {this.state.emailError? true: false}
+                        helperText={this.state.emailError}
                         onChange={this.onchangeEmail}
                     />
                    
@@ -130,10 +158,12 @@ class LoginForm extends React.Component<LoginFormProps,any> {
                         name="password"
                         margin="normal"
                         variant="outlined"
+                        error = {this.state.passwordError? true: false}
+                        helperText={this.state.passwordError}
                         onChange={this.onChangePassword}
                     />
                 </LoginField>
-                <LoginButton innerRef={this.button} disabled={this.state.onProcess} onClick={this.onLogin}> Continue </LoginButton>
+                <LoginButton  disabled={this.state.onProcess} innerRef={this.button} onClick={this.onLogin}> Continue </LoginButton>
             </LoginWrapper>
         )
     }
@@ -142,9 +172,9 @@ class LoginForm extends React.Component<LoginFormProps,any> {
 };
 
 const mapStateToProps = (state: any) => { 
-    const loginStatus = isLogin(state);
+    const loginResult = getLoginResult(state);
     return {
-        loginStatus,
+        loginResult,
     };
 };
 
