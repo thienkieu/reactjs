@@ -1,13 +1,7 @@
 import * as React from 'react';
-import styled from 'styled-components';
 import { TextField } from 'ui/Input/index';
 import { Button } from 'ui/Button/index';
-import { connect } from 'infrastructure/redux/index';
-
-import login from '../../interact/login';
-import redirectToHome from '../../proxy/redirectToHome';
-import getLoginResult from '../../proxy/getLoginResult';
-import updateLoginResult from '../../proxy/updateLoginResult';
+import { subscribeStateChange, styled } from 'infrastructure';
 
 const LoginWrapper = styled('div')`
     box-shadow: 0 10px 20px rgba(38,50,56,.15);
@@ -70,7 +64,7 @@ class LoginForm extends React.Component<LoginFormProps,any> {
 
     redirectToHomePage(props: any) {
         if (props.loginResult.isLogin === true) {
-            redirectToHome();
+            //redirectToHome();
         }
     }
 
@@ -109,11 +103,11 @@ class LoginForm extends React.Component<LoginFormProps,any> {
         }
         
         const handlerResponse  = async function(data: any) {
-            const result = await login(data);
+           /* const result;;//await login(data);
             this.button.current.isRunning = false;
             
             if (result.isSuccess){
-                updateLoginResult(result);
+               // updateLoginResult(result);
             } else {
                 this.setState({
                     onProcess: false,
@@ -121,7 +115,7 @@ class LoginForm extends React.Component<LoginFormProps,any> {
                     passwordError: result.errorInfo.password,
                 });
             }
-            
+            */
             
         }.bind(this);
         handlerResponse(params);
@@ -172,10 +166,11 @@ class LoginForm extends React.Component<LoginFormProps,any> {
 };
 
 const mapStateToProps = (state: any) => { 
-    const loginResult = getLoginResult(state);
+    console.log(state);
+    //const loginResult = getLoginResult(state);
     return {
-        loginResult,
+        loginResult: {},
     };
 };
 
-export default connect(mapStateToProps)(LoginForm);
+export default subscribeStateChange(mapStateToProps)(LoginForm);

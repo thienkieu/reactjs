@@ -139,6 +139,7 @@ module.exports = {
             ui: path.resolve(APP_DIR+'/packages/ui'),
             libs: path.resolve(APP_DIR+'/packages/libs'),
             infrastructure: path.resolve(APP_DIR+'/infrastructure'),
+            themeImplement: path.resolve(APP_DIR+'/infrastructure/redux/theme'),
             coreModule: path.resolve(APP_DIR+'/src/core'),
             userModule: path.resolve(APP_DIR+'/src/user'),
             themeModule: path.resolve(APP_DIR+'/src/themes'),

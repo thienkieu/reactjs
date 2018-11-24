@@ -1,8 +1,8 @@
 import * as React from 'react';
 import login from '../../interact/login';
 import LoginForm from './LoginForm';
-import styled from 'styled-components';
-import Logo from './Logo';
+import { styled } from 'infrastructure';
+//import Logo from './Logo';
 
 const LoginPageWrapper = styled('div')`
     display: flex;
@@ -36,7 +36,6 @@ class LoginPage extends React.Component<LoginPageProps, any> {
     render() {
         return (
             <LoginPageWrapper>
-                <Logo/>
                 <LoginForm handleLogin={this.onLogin}/>
             </LoginPageWrapper>
         )

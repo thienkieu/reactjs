@@ -1,5 +1,5 @@
 import _ from 'lodash';
 import { fromJS } from 'immutable';
-import { withTheme } from 'styled-components';
+import styled, { withTheme } from 'styled-components';
 
-export { _, fromJS, withTheme }
+export { _, fromJS, withTheme, styled }

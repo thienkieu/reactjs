@@ -21,11 +21,12 @@ class Logo extends React.Component<LogoProps,any> {
     }
 
     render() {
-        return (
+        return false;
+        /*return (
             <LogoLink href={SiteURL.Home.path}>
                 <img src={loginLogo} />
             </LogoLink>
-        )
+        )*/
     }
 };
 

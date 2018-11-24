@@ -1,1 +1,0 @@
-export const LOAD_GITHUB_REPOS = 'LOAD_GITHUB_REPOS';
