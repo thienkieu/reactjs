@@ -4,7 +4,8 @@ import {
     createReducer,
     subscribeStateChange,
     initStore,
-    getStore
+    getStore,
+    redirectPage,
 } from './interfaces/storage/index';
 
 import styled from './styledComponent';
@@ -17,4 +18,5 @@ export {
     getStore,
     initStore,
     styled,
+    redirectPage,
 };

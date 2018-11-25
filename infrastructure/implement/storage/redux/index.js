@@ -17,7 +17,7 @@ function initReducer(store) {
     store.injectedReducers = {};
 }
 
-function injectReducer(store,name, reducers) {
+function injectReducer(store, name, reducers) {
     if (!store.injectedReducers.hasOwnProperty(name)) {
         const r = combineReducers(reducers);
         store.injectedReducers[name] = r;
@@ -41,10 +41,10 @@ function injectSaga(store, name, saga) {
     }
 }
 
-let store = null;
+let localStore = null;
 function initStore() {
     const history = createBrowserHistory();
-    store = createStore(
+    localStore = createStore(
         connectRouter(history)(()=>{}),
         compose(
             applyMiddleware(
@@ -56,16 +56,16 @@ function initStore() {
         
     );
 
-    store.history = history;
+    localStore.history = history;
 
-    initReducer(store);
-    initSaga(store);
+    initReducer(localStore);
+    initSaga(localStore);
 
-    return store;
+    return localStore;
 }
 
 function getStore(){
-    return store;
+    return localStore;
 }
 
 function subscribeStateChange(mapStateToProps, mapDispatchToProps){
@@ -74,10 +74,20 @@ function subscribeStateChange(mapStateToProps, mapDispatchToProps){
     }
 }
 
+const redirectPage = function(link){
+    getStore().dispatch(push(link));
+}
+
+const updateState = function(params){
+    getStore().dispatch(params);
+}
+
 export {
     initStore,
     getStore,
     injectReducer,
     injectSaga,
     subscribeStateChange,
+    redirectPage,
+    updateState,
 }

@@ -1,12 +1,17 @@
-
-import LoginPage from 'userModule/components/Login/LoginPage';
+import PublicLayout from 'themeModule/src/component/PublicLayout';
+import UserModuleWithRedux from 'userModule/infrastructure/UserModuleWithRedux';
+import CoreModuleWithRedux from 'coreModule/infrastructure/CoreModuleWithRedux';
 
 const SiteURL = {
-   
-    Login: {
-        ContentComponent: LoginPage,
+    userModule: {
+        ContentComponent: UserModuleWithRedux,
         Layout: PublicLayout,
-        path: '/login'
+        path: '/user'
+    },
+    coreModule: {
+        ContentComponent: CoreModuleWithRedux,
+        Layout: PublicLayout,
+        path: '/core'
     }   
 }
 

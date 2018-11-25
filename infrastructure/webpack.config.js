@@ -12,8 +12,8 @@ module.exports = {
     mode: 'development',
     devtool: 'inline-source-map',
     devServer: {
-        contentBase: APP_DIR + '/dist',
-        historyApiFallback: true
+       // contentBase: APP_DIR + '/dist',
+        historyApiFallback: true,
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -21,12 +21,13 @@ module.exports = {
             inject: 'body',
             appMountId: 'app',
             hash: true,
-            template: APP_DIR + '/src/core/index.html', //require('html-webpack-template'),
+            template: APP_DIR + '/src/core/src/index.html', //require('html-webpack-template'),
             filename: 'index.html',
             /*appMountHtmlSnippet: '<div class="app-spinner"><i class="fa fa-spinner fa-spin fa-5x" aria-hidden="true"></i></div>',
             headHtmlSnippet: '<style>div.app-spinner {position: fixed;top:50%;left:50%;}</style >',
             bodyHtmlSnippet: '<custom-element></custom-element>',*/
             baseHref: '/',
+            baseUrl: '/',
 
         }),
         new ExtractTextPlugin({
@@ -135,6 +136,7 @@ module.exports = {
             todoPackage: path.resolve(APP_DIR+'/packages/todoComponents'),
             store$: path.resolve(APP_DIR+'/infrastructure/redux/store.js'),
             services: path.resolve(APP_DIR+'/packages/services'),
+            EventManager$: path.resolve(APP_DIR+'/infrastructure/event/eventManager.js'),
             themeProvider$: path.resolve(APP_DIR+'/packages/theme/ThemeProvider.js'),
             ui: path.resolve(APP_DIR+'/packages/ui'),
             libs: path.resolve(APP_DIR+'/packages/libs'),

@@ -4,6 +4,8 @@ import {
     injectReducer,
     subscribeStateChange,
     injectSaga,
+    redirectPage,
+    updateState,
 } from 'infrastructure/implement/storage/redux';
 
 export {
@@ -12,4 +14,6 @@ export {
     injectReducer,
     subscribeStateChange,
     injectSaga,
+    redirectPage,
+    updateState,
 }
